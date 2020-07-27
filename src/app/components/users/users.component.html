@@ -1,0 +1,23 @@
+<h2>Users</h2>
+<button [disabled]="!enableAddUser" class="btn btn-block mb-3" [ngClass]="currentClasses">Add user</button>
+<ul class="list-unstyled mb-2" *ngIf="users.length > 0;else noUsers">
+    <li class="card card-body" *ngFor="let user of users" [class.bg-light]="user.isActive">
+        <div class="row">
+            <div class="col-sm-4">
+                <img [src]="user.image" class="img-fluid" alt="">
+            </div>
+            <div class="col-sm-8">
+                <h3>{{user.firstName}} {{user.lastName}}</h3>
+                <ul class="list-group" *ngIf="showExtended && user.age && user.address">
+                    <li class="list-group-item">Age: {{user.age}}</li>
+                    <li class="list-group-item">Address: {{user.address.city}}, {{ user.address.street}},
+                        {{user.address.state}}</li>
+                </ul>
+            </div>
+        </div>
+    </li>
+</ul>
+
+<ng-template #noUsers>
+    <h3> No users found</h3>
+</ng-template>
