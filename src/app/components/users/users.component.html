@@ -1,12 +1,43 @@
-<h2>Users</h2>
-<button
-  (click)="addUser({firstName:'Adam', lastName:'Słodowy', isActive:true})"
-  [disabled]="!enableAddUser"
-  class="btn btn-block mb-3">Add user
+<button class="btn btn-block mb-3 btn-dark"
+        (click)="showUserForm = !showUserForm">Add user
 </button>
+<div class="card card-body"
+     *ngIf="showUserForm">
+  <h2>Add user</h2>
+  <form>
+    <div class="form-group">
+      <label>First name</label>
+      <input type="text" class="form-control" name="firstName">
+      <label>Last name</label>
+      <input type="text" class="form-control" name="laseName">
+      <label>Age</label>
+      <input type="number" class="form-control" name="age">
+      <label>City</label>
+      <input type="text" class="form-control" name="city">
+      <label>Street</label>
+      <input type="text" class="form-control" name="street">
+      <label>State</label>
+      <input type="text" class="form-control" name="state">
+    </div>
+
+  </form>
+  <button class="btn btn-block mb-3"
+          (click)="addUser({firstName:'Adam', lastName:'Słodowy', isActive:true})"
+          [disabled]="!enableAddUser">Add new user
+  </button>
+</div>
+<h2>Users</h2>
+
 <ul class="list-unstyled mb-2" *ngIf="users.length > 0;else noUsers">
   <li class="card card-body" *ngFor="let user of users" [class.bg-light]="user.isActive">
-    <h3>{{user.firstName}} {{user.lastName}}</h3>
+    <h3>{{user.firstName}} {{user.lastName}}
+      <small *ngIf="user.age && user.address">
+        <button class="btn btn-sm btn-dark"
+                (click)="toggleHide(user)">
+          <i [ngClass]="user.hide? 'fa fa-plus':'fa fa-minus'"></i>
+        </button>
+      </small>
+    </h3>
     <ul *ngIf="!user.hide && user.age && user.address">
       <li>Age: {{user.age}}</li>
       <li>Address: {{user.address.city}}, {{ user.address.street}},

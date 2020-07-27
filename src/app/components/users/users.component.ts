@@ -9,13 +9,16 @@ import {User} from '../../models/User';
 export class UsersComponent implements OnInit {
 
   users: User[];
-  enableAddUser: true;
+  enableAddUser: boolean;
+  showUserForm: boolean;
 
   constructor() {
   }
 
   ngOnInit(): void {
-    console.log('init...');
+    this.showUserForm = false;
+    this.enableAddUser = true;
+    console.log('init... and  enableAddUser %s', this.enableAddUser);
     this.setUsers();
   }
 
@@ -23,6 +26,9 @@ export class UsersComponent implements OnInit {
     this.users.push(user);
   }
 
+  toggleHide(user: User): void {
+    user.hide = !user.hide;
+  }
 
   addUserFromEvent(e): void {
     console.log(e);
