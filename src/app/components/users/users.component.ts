@@ -8,29 +8,32 @@ import { User } from '../../models/User';
 export class UsersComponent implements OnInit {
 
   users: User[];
-  showExtended = false;
   enableAddUser: boolean = true;
-  currentClasses = {};
 
   constructor() { }
 
   ngOnInit(): void {
     console.log('init...');
     this.setUsers();
-    this.showExtended = true;
-    this.setCurrentClasses();
   }
 
   addUser(user: User) {
     this.users.push(user);
   }
 
-  setCurrentClasses() {
-    this.currentClasses = {
-      'btn-success': this.enableAddUser,
-      'big-text':this.showExtended
-    }
+
+  addUserFromEvent(e) {
+    console.log(e);
+
+    let user1: User;
+    user1 = {
+      lastName: 'Ogórek',
+      firstName: 'Karol'
+    };
+
+    this.addUser(user1)
   }
+
 
   setUsers() {
     this.users = [
@@ -43,8 +46,9 @@ export class UsersComponent implements OnInit {
           city: 'Krępa',
           state: 'mazowieckie'
         },
-        image: "http://lorempixel.com/600/600/people/3",
-        isActive: true
+        isActive: true,
+        registered: new Date("2020-09-01"),
+        hide: true
       },
       {
         lastName: 'Koteł',
@@ -55,8 +59,9 @@ export class UsersComponent implements OnInit {
           city: 'Olecko',
           state: 'warmińskie'
         },
-        image: "http://lorempixel.com/600/600/people/2",
-        isActive: false
+        isActive: false,
+        registered: new Date('2019-08-04 08:54:34'),
+        hide: true
       },
       {
         lastName: 'Meszka',
@@ -67,17 +72,11 @@ export class UsersComponent implements OnInit {
           city: 'Kalisz',
           state: 'pomorskie'
         },
-        image: "http://lorempixel.com/600/600/people/1",
-        isActive: true
+        isActive: true,
+        registered: new Date('2059-02-23 18:12:36'),
+        hide: true
       }
     ];
 
-    let user1: User;
-    user1 = {
-      lastName: 'Ogórek',
-      firstName: 'Karol'
-    };
-
-    this.addUser(user1)
   }
 }

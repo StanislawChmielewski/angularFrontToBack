@@ -10,8 +10,7 @@ import { User } from '../../models/User';
 export class UserComponent implements OnInit {
 
     user: User;
-    enableAddUser: boolean = true;
-    
+   
     constructor() {
     }
 

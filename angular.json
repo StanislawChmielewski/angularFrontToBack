@@ -25,6 +25,7 @@
             ],
             "styles": [
               "src/styles.css",
+              "./node_modules/font-awesome/css/font-awesome.css",
               "./node_modules/bootstrap/dist/css/bootstrap.css"
             ],
             "scripts": [
@@ -124,6 +125,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "angularapp"
+    }
+  },
+  "defaultProject": "angularapp",
+  "cli": {
+    "analytics": "d41bbf0a-63e9-481e-807c-4ec0eb370c5d"
+  }
 }
