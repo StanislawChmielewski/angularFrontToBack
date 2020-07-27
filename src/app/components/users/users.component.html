@@ -1,17 +1,21 @@
 <h2>Users</h2>
-<button (click) = "addUser({firstName:'Adam', lastName:'Słodowy', isActive:true})" [disabled]="!enableAddUser" class="btn btn-block mb-3" >Add user</button>
+<button
+  (click)="addUser({firstName:'Adam', lastName:'Słodowy', isActive:true})"
+  [disabled]="!enableAddUser"
+  class="btn btn-block mb-3">Add user
+</button>
 <ul class="list-unstyled mb-2" *ngIf="users.length > 0;else noUsers">
-    <li class="card card-body" *ngFor="let user of users" [class.bg-light]="user.isActive">
-        <h3>{{user.firstName}} {{user.lastName}}</h3>
-        <ul *ngIf="!user.hide && user.age && user.address">
-            <li>Age: {{user.age}}</li>
-            <li>Address: {{user.address.city}}, {{ user.address.street}},
-                {{user.address.state}}</li>
-                <li>Registered: {{user.registered | date: 'longDate'}}</li>
-        </ul>
-    </li>
+  <li class="card card-body" *ngFor="let user of users" [class.bg-light]="user.isActive">
+    <h3>{{user.firstName}} {{user.lastName}}</h3>
+    <ul *ngIf="!user.hide && user.age && user.address">
+      <li>Age: {{user.age}}</li>
+      <li>Address: {{user.address.city}}, {{ user.address.street}},
+        {{user.address.state}}</li>
+      <li>Registered: {{user.registered | date: 'longDate'}}</li>
+    </ul>
+  </li>
 </ul>
 
 <ng-template #noUsers>
-    <h3> No users found</h3>
+  <h3> No users found</h3>
 </ng-template>

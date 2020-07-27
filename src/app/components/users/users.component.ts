@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { User } from '../../models/User';
+import {Component, OnInit} from '@angular/core';
+import {User} from '../../models/User';
+
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -8,21 +9,22 @@ import { User } from '../../models/User';
 export class UsersComponent implements OnInit {
 
   users: User[];
-  enableAddUser: boolean = true;
+  enableAddUser: true;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
     console.log('init...');
     this.setUsers();
   }
 
-  addUser(user: User) {
+  addUser(user: User): void {
     this.users.push(user);
   }
 
 
-  addUserFromEvent(e) {
+  addUserFromEvent(e): void {
     console.log(e);
 
     let user1: User;
@@ -31,11 +33,11 @@ export class UsersComponent implements OnInit {
       firstName: 'Karol'
     };
 
-    this.addUser(user1)
+    this.addUser(user1);
   }
 
 
-  setUsers() {
+  setUsers(): void {
     this.users = [
       {
         lastName: 'Chmiel',
@@ -47,7 +49,7 @@ export class UsersComponent implements OnInit {
           state: 'mazowieckie'
         },
         isActive: true,
-        registered: new Date("2020-09-01"),
+        registered: new Date('2020-09-01'),
         hide: true
       },
       {
