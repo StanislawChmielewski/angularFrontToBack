@@ -7,10 +7,19 @@ import {User} from '../../models/User';
   styleUrls: ['./users.component.css']
 })
 export class UsersComponent implements OnInit {
-
   users: User[];
   enableAddUser: boolean;
   showUserForm: boolean;
+  user: User = {
+    lastName: '',
+    firstName: '',
+    age: null,
+    address: {
+      street: '',
+      city: '',
+      state: ''
+    }
+  };
 
   constructor() {
   }
@@ -20,26 +29,18 @@ export class UsersComponent implements OnInit {
     this.enableAddUser = true;
     console.log('init... and  enableAddUser %s', this.enableAddUser);
     this.setUsers();
+
   }
 
-  addUser(user: User): void {
-    this.users.push(user);
+  addUser(): void {
+    this.user.isActive = true;
+    this.user.registered = new Date();
+    console.log(this.user);
+    this.users.unshift(this.user);
   }
 
   toggleHide(user: User): void {
     user.hide = !user.hide;
-  }
-
-  addUserFromEvent(e): void {
-    console.log(e);
-
-    let user1: User;
-    user1 = {
-      lastName: 'Ogórek',
-      firstName: 'Karol'
-    };
-
-    this.addUser(user1);
   }
 
 
